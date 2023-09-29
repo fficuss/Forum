@@ -35,6 +35,10 @@
     margin-top: 40px;
 }
 
+.signin_button{
+    margin-top: 40px;
+}
+
 .container_signin{
     margin-top: 20px;
     font-family: 'Roboto', sans-serif;
@@ -63,5 +67,5 @@ input[type="text"]{
 
 a{
     text-decoration: inherit;
-    color:black;
+    color:rgb(46, 20, 47);
 }
