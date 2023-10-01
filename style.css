@@ -1,20 +1,86 @@
+/* Site Title and icons on the top */
+
+body{
+    margin: 0;
+}
+
+.container{
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100px; 
+    display: flex;
+    align-items: center;
+}
+
 .site_title{
-    margin-top: 20px;
-    margin-left: 30px;
-    margin-bottom: 20px;
+    margin-left: 40px;
     font-family: 'Roboto', sans-serif;
     font-size: 50px;
     font-weight: bolder;
 }
 
-.container{
-    margin-top: 70px;
+.icons{
+    margin-top: 12px;
+    margin-left: 1200px;
+}
+
+.figure{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #C4B9D8;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.figure::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2.5px;
+    background-color: rgb(46, 20, 47); 
+    z-index: 1; 
+}
+
+a{
+    text-decoration: inherit;
+    color:rgb(46, 20, 47);
+}
+
+/* Registration and Sign in */
+
+.container1{
+    margin-top: 50px;
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
     text-align: center;
 }
 
+.container2{
+    margin-top: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-align: center;
+}
+
+.container3{
+    text-align: center;
+    position: relative;
+    width: 200px; 
+    margin: 0 auto; 
+}
+
 .register_font{
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.signin_font{
     font-size: 30px;
     font-weight: 900;
 }
@@ -65,7 +131,3 @@ input[type="text"]{
     padding: 8px 15px;
 }
 
-a{
-    text-decoration: inherit;
-    color:rgb(46, 20, 47);
-}
