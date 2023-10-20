@@ -4,6 +4,7 @@ body{
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background-color: #e8e5ec;
 }
 
 /* Site Title and icons on the top */
@@ -28,19 +29,19 @@ body{
 
 .icons{
     margin-top: 12px;
-    margin-left: 1300px;
+    margin-left: 1500px;
     position: absolute;
 }
 
 .messenger{
     margin-top: 10px;
-    margin-left: 1350px;
+    margin-left: 1550px;
     
 }
 
 .LogInButton{
     margin-top: 10px;
-    margin-left: 1400px;
+    margin-left: 1600px;
     z-index: 1;
     font-size: 18px;
     position: absolute;
@@ -74,7 +75,7 @@ a{
 }
 
 .side{
-    background-color: rgb(255, 255, 255);
+    background-color: #e8e5ec;
     position: absolute;
     top: 100px;
     left: 0;
@@ -123,6 +124,7 @@ a{
     margin-left: 18px;
     z-index: 1;
 }
+
 
 .nickname {
     font-weight: bold;
