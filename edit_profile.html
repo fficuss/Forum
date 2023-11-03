@@ -10,18 +10,23 @@
 </head>
 <body>
     <div class="container_p">
-        <div class="nickname">Nickname</div>
-        <div class="edit_profile">
-            <a href="edit_profile.html"><img src="edit_profile.png" alt="Icon Text" style="height: 32px; width: 32px;"></a>
-        </div>
         <div class="profile_back"></div>
-    </div>
-    <div class="icon2">
-        <img src="profile_icon.png" alt="Icon Text" style="height: 180px; width: 180px;">
     </div>
     <div class="site_title1">
         <a href="./forum.html">Forum</a>
     </div>
     <div class="side" id = "side"></div>
+    <div class="e_title">Edit profile</div>
+
+    <div class="image-container">
+        <button class="open-popup-button" onclick="openPhotoPopup()"><img src="profile_icon.png" alt="Icon Text" style="height: 180px; width: 180px;"></button>
+        <div id="photo-popup" class="popup">
+        <input type="file" id="file-input" accept="image/*" onchange="displayChosenPhoto()"/>
+        <button class="upload-button" onclick="uploadPhoto()">Upload</button></div>
+    </div>
+    <div class="nickname1"><input type="text" placeholder="Nickname" name="nck" id="nck" required></div>
+
+    <script src="script.js"></script>
+
 </body>
 </html>

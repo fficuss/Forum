@@ -3,7 +3,6 @@
 body{
     margin: 0;
     padding: 0;
-    overflow: hidden;
     background-color: #e8e5ec;
 }
 
@@ -29,19 +28,19 @@ body{
 
 .icons{
     margin-top: 12px;
-    margin-left: 1500px;
+    margin-left: 1300px;
     position: absolute;
 }
 
 .messenger{
     margin-top: 10px;
-    margin-left: 1550px;
+    margin-left: 1350px;
     
 }
 
 .LogInButton{
     margin-top: 10px;
-    margin-left: 1600px;
+    margin-left: 1400px;
     z-index: 1;
     font-size: 18px;
     position: absolute;
@@ -100,6 +99,17 @@ a{
 
 /* Profile part */
 
+.image-container {
+    margin-top: 10px;
+}
+
+.image-container img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover; /* Maintain image aspect ratio */
+    border-radius: 50%; /* Crop images into circles */
+}
+
 .site_title1 {
     z-index: 1;
     position: absolute;
@@ -136,12 +146,6 @@ a{
     z-index: 1;
 }
 
-.edit_profile {
-    margin-left: 10px; 
-    z-index: 1;
-    margin-top: 100px;
-}
-
 .profile_back {
     position: absolute;
     margin-top: 0;
@@ -159,6 +163,73 @@ a{
     height: 2.5px;
     background-color: rgb(46, 20, 47);
     z-index: 1;
+}
+
+/*Edit Profile*/
+
+.edit_profile {
+    margin-left: 10px; 
+    z-index: 1;
+    margin-top: 100px;
+}
+
+.icon2{
+    margin-left: 270px;
+    margin-top: 30px;
+}
+
+.nickname1{
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(46, 20, 47);
+    font-size: 30px;
+    margin-left: 280px; 
+    margin-top: 20px;
+    z-index: 1;
+}
+
+.e_title{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f1f0f3;
+    padding: 20px;
+    z-index: 1000;
+    border-radius: 12px;
+    box-shadow: 0px 0px 5px rgba(28, 1, 34, 0.5);
+}
+
+.upload-button {
+    background-color: #C4B9D8;
+    color: #000000;
+    padding: 5px 10px;
+    border: none;
+    width: 150px;
+    border-radius: 5px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.open-popup-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 270px;
+    margin-top: 10px;
+}
+
+.nickname_input{
+    margin-left: 270px;
 }
 
 /* Registration and Sign in */
@@ -226,17 +297,17 @@ button{
     border: none;
     width: 330px;
     height: 60px;
-    font-size: 24px;
+    font-size: 28px;
     border-radius: 12px;
 }
 
 input[type="text"]{
-    background-color: rgb(235, 235, 235);
+    background-color: #e8e5ec;
     border: none;
     height: 60px;
     width: 300px;
     border-radius: 12px;
-    font-size: 18px;
+    font-size: 28px;
     padding: 8px 15px;
 }
 
