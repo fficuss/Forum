@@ -9,16 +9,25 @@
 
 </head>
 <body>
-    <div class="mcontainer">
-        <div class="tmessenger">
-            Messenger
+    <div class="container">
+        <div class="site_title">
+            <a href="./forum.html">Messenger</a>
         </div>
         <div class="figure"></div>
     </div>
     <div class="side1" id = "side1">
     </div>
-    <div class="messege_input">
-        
-    </div>
+    <footer>
+        <div id="chat-messages" class="chat-messages">
+            
+        </div>
+        <div class="message_input">
+            <input type="message" placeholder="Message" name="msg" id="msg" required>
+            <div class="micon">
+                <a href="#" onclick="sendMessage()"><img src="message.png" alt="Send Icon" style="height: 32px; width: 32px;"></a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
