@@ -1,0 +1,450 @@
+
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #fff0e3;
+}
+
+/* Site Title and icons on the top */
+
+.container{
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100px; 
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+
+.site_title{
+    margin-left: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 50px;
+    font-weight: bolder;
+    position: absolute;
+}
+
+.icons{
+    margin-top: 12px;
+    margin-left: 1200px;
+    position: absolute;
+}
+
+
+.LogInButton{
+    margin-top: 10px;
+    margin-left: 1290px;
+    z-index: 1;
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    font-family: 'Roboto', sans-serif;
+}
+
+.figure{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #ae8595;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.figure::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2.5px;
+    background-color: #363438; 
+    z-index: 1; 
+}
+
+a{
+    text-decoration: inherit;
+    color:#363438;
+}
+
+.LogInButton{
+    font-family: 'Roboto', sans-serif;
+}
+
+.side{
+    background-color: #fff0e3;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    transition-timing-function: ease-in-out;
+    transition-duration: 1s;
+    border-right-width: 5px;
+    z-index: -1;
+}
+.side::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background-color: #363438; 
+    z-index: 1; 
+}
+
+/*Messenger part*/
+
+.mcontainer{
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100px; 
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+
+.tmessenger{
+    margin-left: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 50px;
+    font-weight: bolder;
+    position: absolute;
+}
+
+.side1{
+    background-color: #fff0e3;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 350px;
+    height: 100%;
+    transition-timing-function: ease-in-out;
+    transition-duration: 1s;
+    border-right-width: 5px;
+    z-index: -1;
+}
+.side1::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background-color: #363438; 
+    z-index: 1; 
+}
+
+/* Profile part */
+
+.image-container {
+    margin-top: 10px;
+}
+
+.image-container img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover; /* Maintain image aspect ratio */
+    border-radius: 50%; /* Crop images into circles */
+}
+
+.site_title1 {
+    z-index: 1;
+    position: absolute;
+    font-size: 24px;
+    margin-left: 15px;
+    margin-top: 5px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    color: #363438;
+}
+
+.container_p {
+    position: relative;
+    margin-top: 0;
+    width: 100%;
+    height: 220px;
+    display: flex; /* Use flex layout to ensure elements are in the same line */
+    align-items: center; /* Vertically center elements */
+}
+
+.icon {
+    margin-left: 18px;
+    z-index: 1;
+}
+
+
+.nickname {
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    color: #363438;
+    font-size: 50px;
+    margin-left: 10px; 
+    margin-top: 90px;
+    z-index: 1;
+}
+
+.profile_back {
+    position: absolute;
+    margin-top: 0;
+    background-color: #ae8595;
+    width: 100%;
+    height: 100%;
+}
+
+.profile_back::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2.5px;
+    background-color: #363438;
+    z-index: 1;
+}
+
+/*Edit Profile*/
+
+.edit_profile {
+    margin-left: 10px; 
+    z-index: 1;
+    margin-top: 100px;
+}
+
+.icon2{
+    margin-left: 270px;
+    margin-top: 30px;
+}
+
+.nickname1{
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    color: #363438;
+    font-size: 30px;
+    margin-left: 280px; 
+    margin-top: 20px;
+    z-index: 1;
+}
+
+.e_title{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff0e3;
+    padding: 20px;
+    z-index: 1000;
+    border-radius: 12px;
+    box-shadow: 0px 0px 5px rgba(28, 1, 34, 0.5);
+}
+
+.upload-button {
+    background-color: #ae8595;
+    color: #363438;
+    padding: 5px 10px;
+    border: none;
+    width: 150px;
+    border-radius: 5px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.open-popup-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 270px;
+    margin-top: 10px;
+}
+
+.nickname_input{
+    margin-left: 270px;
+}
+
+/* Registration and Sign in */
+
+.container1{
+    margin-top: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-align: center;
+}
+
+.container2{
+    margin-top: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-align: center;
+}
+
+.container3{
+    text-align: center;
+    position: relative;
+    width: 200px; 
+    margin: 0 auto; 
+}
+
+.register_font{
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.signin_font{
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.email_input{
+    margin-top: 40px;
+}
+
+.username_input{
+    margin-top: 10px;
+}
+
+.password_input{
+    margin-top: 10px;
+}
+
+.register_button{
+    margin-top: 40px;
+}
+
+.signin_button{
+    margin-top: 40px;
+}
+
+.container_signin{
+    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: 18px;
+}
+
+.registerbtn{
+    background-color: #966d75;
+    border: none;
+    width: 330px;
+    height: 60px;
+    font-size: 28px;
+    border-radius: 12px;
+}
+
+
+.registerbtn:hover{
+    background-color: #ae8595;
+    border: none;
+}
+
+.registerbtn:active{
+    background-color: #865f67;
+    border: none;
+}
+
+.message_input{
+    margin-left: 370px;
+    position: fixed;
+    bottom: 0;
+    padding: 10px 0; 
+    box-sizing: border-box;
+    display: flex;
+}
+
+.chat-messages{
+    margin-left: 370px;
+    font-family:'Roboto', sans-serif;
+    font-size:20px;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.message {
+    display: table;
+    margin-top: 20px;
+    padding: 8px; 
+    border-radius: 8px; 
+    margin: 0px auto 0px auto;
+    padding:5px;
+    background-color:#ae8595; 
+    color: #363438;
+}
+
+
+.minput{
+    margin-top: 10px;
+    top: 10px;
+    margin: 10px;
+}
+
+input[type="text"]{
+    background-color: #fff0e3;
+    border: 2px solid #363438;
+    height: 60px;
+    width: 300px;
+    border-radius: 12px;
+    font-size: 28px;
+    padding: 8px 15px;
+}
+
+input[type="email"]{
+    background-color: #fff0e3;
+    border: 2px solid #363438;
+    height: 60px;
+    width: 300px;
+    border-radius: 12px;
+    font-size: 28px;
+    padding: 8px 15px;
+}
+
+input[type="username"]{
+    background-color: #fff0e3;
+    border: 2px solid #363438;
+    height: 60px;
+    width: 300px;
+    border-radius: 12px;
+    font-size: 28px;
+    padding: 8px 15px;
+}
+
+input[type="password"]{
+    background-color: #fff0e3;
+    border: 2px solid #363438;
+    height: 60px;
+    width: 300px;
+    border-radius: 12px;
+    font-size: 28px;
+    padding: 8px 15px;
+}
+
+input[type="message"]{
+    background-color: #fff0e3;
+    border: 2px solid #363438;
+    height: 30px;
+    width: 500px;
+    border-radius: 12px;
+    font-size: 28px;
+    padding: 8px 15px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="username"]:focus,
+input[type="password"]:focus,
+input[type="message"]:focus {
+    background-color: #fef5ed; 
+    border-color: #363438; 
+}
