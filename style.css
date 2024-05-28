@@ -28,14 +28,43 @@ body{
 
 .icons{
     margin-top: 12px;
-    margin-left: 1200px;
+    margin-left: 1700px;
     position: absolute;
 }
 
+.author_icon{
+    position: absolute;
+}
+
+.author_name{
+    position: absolute;
+    margin-top: 8px;
+    margin-left: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: #363438;
+}
+
+.author_id{
+    position: absolute;
+    margin-top: 8px;
+    margin-left: 140px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: #918f94;
+}
+
+.post_text{
+    width: 90%;
+    word-break: break-all;
+    font-family: 'Roboto', sans-serif;
+    color: #363438;
+    margin-top: 45px;
+}
 
 .LogInButton{
     margin-top: 10px;
-    margin-left: 1290px;
+    margin-left: 1790px;
     z-index: 1;
     font-size: 18px;
     font-weight: bold;
@@ -99,6 +128,7 @@ a{
     background-color: #fef6f0;
     padding: 20px;
     margin-top: 30px;
+    margin-bottom: 30px;
     margin-left: 350px;
     width: 60%; 
     height: 400px;
