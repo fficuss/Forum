@@ -10,46 +10,73 @@
 <body>
     <div class="container">
         <div class="site_title">
-            <a href="{{ url('/fanhome') }}"><img src="{{ asset('img/logo.png') }}" alt="Icon Text" style="height: 90px; width: 90px; margin-right: 10px; margin-top: 10px;"></a>
+            <a href="{{ url('/fanhome') }}">FORUM</a>
         </div>
         <div class="icons">
-            <a href="{{ url('/profile') }}"><img src="{{ asset('img/profile_icon.png') }}" alt="Icon Text" style="height: 32px; width: 32px; margin-right: 10px;"></a>
-            <a href="{{ url('/messenger') }}"><img src="{{ asset('img/messenger.png') }}" alt="Icon Text" style="height: 32px; width: 32px;"></a>
+            @auth
+                <a href="{{ url('/profile') }}">
+                    @if(Auth::user()->profile_picture)
+                        <img src="{{ asset('storage/' . Auth::user()->profile_picture) }}" alt="Profile" style="height: 32px; width: 32px; margin-right: 10px;">
+                    @else
+                        <img src="{{ asset('img/default_profile_icon.png') }}" alt="Profile" style="height: 32px; width: 32px; margin-right: 10px;">
+                    @endif
+                </a>
+                <a href="{{ url('/messenger') }}">
+                    <img src="{{ asset('img/messenger.png') }}" alt="Messenger" style="height: 32px; width: 32px;">
+                </a>
+            @endauth
         </div>
         <div class="LogInButton">
-            <a href="{{ url('/register') }}">Log In</a>
+            @guest
+                <a href="{{ url('/signin') }}">Sign in</a>
+            @endguest
+            @auth
+                <form id="logout-form" action="{{ route('signout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign Out</a>
+            @endauth
         </div>
         <div class="figure"></div>
     </div>
     <div class="content">
-        <div class="posts" id="posts">
-            <div class="author_icon">
-                <img src="{{ asset('images/profile_icon.png') }}" alt="Icon Text" style="height: 32px; width: 32px; margin-right: 10px;">
+        @auth
+            <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data" class="post-form">
+                @csrf
+                <div class="form-group">
+                    <label for="post_text">Post Text</label>
+                    <textarea name="post_text" id="post_text" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="post_image">Post Image</label>
+                    <input type="file" name="post_image" id="post_image" accept="image/*">
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        @endauth
+
+        @foreach($posts as $post)
+            <div class="posts" id="posts">
+                <div class="author_icon">
+                    @if ($post->user->profile_picture)
+                        <img src="data:image/jpeg;base64,{{ base64_encode($post->user->profile_picture) }}" alt="Profile" style="height: 32px; width: 32px; margin-right: 10px;">
+                    @else
+                        <img src="{{ asset('img/profile_icon.png') }}" alt="Profile" style="height: 32px; width: 32px; margin-right: 10px;">
+                    @endif
+                </div>
+                <div class="author_name">
+                    {{ $post->user->username }}
+                </div>
+                <div class="post_text">
+                    {{ $post->text }}
+                </div>
+                @if ($post->image)
+                    <div class="post_image">
+                        <img src="data:image/jpeg;base64,{{ base64_encode($post->image) }}" alt="Post Image" style="max-width: 40%; height: auto;">
+                    </div>
+                @endif
             </div>
-            <div class="author_name">
-                Author name
-            </div>
-            <div class="author_id">
-                @authorID
-            </div>
-            <div class="image">
-                
-            </div>
-        </div>
-        <div class="posts" id="posts">
-            <div class="author_icon">
-                <img src="{{ asset('images/profile_icon.png') }}" alt="Icon Text" style="height: 32px; width: 32px; margin-right: 10px;">
-            </div>
-            <div class="author_name">
-                Author name
-            </div>
-            <div class="author_id">
-                @authorID
-            </div>
-            <div class="post_text">
-                Text without image Text without image Text without image Text without image Text without image Text without image Text without image Text without image Text without image Text without image Text without image 
-            </div>
-        </div>
+        @endforeach
     </div>
     <script src="{{ asset('js/script.js') }}"></script>
 </body>

@@ -23,7 +23,7 @@
         <div class="message_input">
             <input type="message" placeholder="Message" name="msg" id="msg" required>
             <div class="micon">
-                <a href="#" onclick="sendMessage()"><img src="<?php echo e(asset('images/message.png')); ?>" alt="Send Icon" style="height: 32px; width: 32px;"></a>
+                <a href="#" onclick="sendMessage()"><img src="<?php echo e(asset('img/message.png')); ?>" alt="Send Icon" style="height: 32px; width: 32px;"></a>
             </div>
         </div>
     </footer>

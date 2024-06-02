@@ -3,34 +3,71 @@ function openPhotoPopup() {
     popup.style.display = "block";
 }
 
-function uploadPhoto() {
-    var fileInput = document.getElementById("file-input");
-    var selectedFile = fileInput.files[0];
-
-    if (selectedFile) {
-
-        console.log("Selected file:", selectedFile.name);
-
-        var openPopupButton = document.querySelector(".open-popup-button");
-        openPopupButton.innerHTML = ""; 
-        var img = document.createElement("img");
-        img.src = URL.createObjectURL(selectedFile);
-        img.alt = "Chosen Photo";
-        openPopupButton.appendChild(img);
-    } else {
-        console.log("No file selected.");
-    }
-    var popup = document.getElementById("photo-popup");
-    popup.style.display = "none";
-}
-
 function displayChosenPhoto() {
     var fileInput = document.getElementById("file-input");
     var selectedFile = fileInput.files[0];
 
     if (selectedFile) {
+        var openPopupButton = document.querySelector(".open-popup-button img");
+        openPopupButton.src = URL.createObjectURL(selectedFile);
+        openPopupButton.alt = "Chosen Photo";
     }
 }
+
+function uploadPhoto() {
+    var popup = document.getElementById("photo-popup");
+    popup.style.display = "none";
+}
+
+async function updateProfileIcon() {
+    const fileInput = document.getElementById('file-input');
+    const usernameInput = document.getElementById('nck');
+  
+    if (fileInput && fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+  
+      reader.onload = async function () {
+        try {
+          const imageData = reader.result;
+          await updateProfileIconData(usernameInput.value, imageData);
+        } catch (error) {
+          console.error('Error processing image:', error);
+          alert('An error occurred while processing the image.');
+        }
+      };
+  
+      reader.readAsDataURL(file);
+    } else {
+      alert('Please select a profile icon to upload.');
+    }
+  }
+  
+  async function updateProfileIconData(username, imageData) {
+    const profileData = new FormData();
+    profileData.append('username', username);
+    profileData.append('profile_picture', imageData);
+  
+    try {
+      const response = await fetch('{{ route("profile.update") }}', {
+        method: 'POST',
+        body: profileData,
+      });
+  
+      const result = await response.json();
+  
+      if (response.ok) {
+        alert('Profile icon updated successfully!');
+        window.location.reload(); // Reload the page to reflect the changes
+      } else {
+        alert(`Error: ${result.error}`);
+      }
+    } catch (error) {
+      console.error('Error updating profile icon:', error);
+      alert('An error occurred while updating the profile icon.');
+    }
+  }
+  
 
 function sendMessage() {
     var messageInput = document.getElementById('msg');

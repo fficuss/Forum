@@ -12,11 +12,6 @@
         <div class="site_title">
             <a href="{{ url('/fanhome') }}">Forum</a>
         </div>
-        <div class="icons">
-            <a href="{{ url('/profile') }}">
-                <img src="{{ asset('img/profile_icon.png') }}" alt="Icon Text" style="height: 32px; width: 32px;">
-            </a>
-        </div>
         <div class="figure"></div>
     </div>
     
@@ -24,21 +19,22 @@
         <div class="signin_font">
             <h1>Sign In</h1>
         </div>
-        <div class="email_input">
-            <input type="email" placeholder="Email or Username" name="email" id="email" required>
-        </div>
-        <div class="password_input">
-            <input type="password" placeholder="Password" name="psw" id="psw" required>
-        </div>
-        <div class="signin_button">
-            <a href="{{ url('/profile') }}">
+        <form action="{{ url('/signin') }}" method="POST">
+            @csrf
+            <div class="email_input">
+                <input type="email" placeholder="Email or Username" name="email" id="email" required>
+            </div>
+            <div class="password_input">
+                <input type="password" placeholder="Password" name="psw" id="psw" required>
+            </div>
+            <div class="signin_button">
                 <button type="submit" class="registerbtn">Sign In</button>
-            </a>
-        </div>
+            </div>
+        </form>
     </div>
   
     <div class="container_signin">
-        <p>New here? <a href="{{ url('/register') }}">Log In</a>.</p>
+        <p>New here? <a href="{{ url('/register') }}">Register</a>.</p>
     </div>
 </body>
 </html>
