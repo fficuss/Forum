@@ -42,7 +42,7 @@
     <div class="content">
         <?php if(auth()->guard()->check()): ?>
             <div class="create-post-button">
-                <a href="<?php echo e(url('/posts/create')); ?>">Create</a>
+                <button onclick="window.location='<?php echo e(url('/posts/create')); ?>'">Create</button>
             </div>
         <?php endif; ?>
 
@@ -55,21 +55,23 @@
                         <img src="<?php echo e(asset('img/profile_icon.png')); ?>" alt="Profile" style="height: 32px; width: 32px; margin-right: 10px;">
                     <?php endif; ?>
                 </div>
-                <div class="author_name">
-                    <a href="<?php echo e(route('profile.show', $post->user)); ?>"><?php echo e($post->user->username); ?></a>
-                </div>
-                <div class="post_text">
-                    <a href="<?php echo e(route('posts.show', $post)); ?>"><?php echo e(Str::limit($post->title, 50)); ?></a>
-                </div>
-                <div class="post_excerpt">
-                    <?php echo e(Str::limit($post->text, 100)); ?>
-
-                </div>
-                <?php if($post->image): ?>
-                    <div class="post_image">
-                        <img src="data:image/jpeg;base64,<?php echo e(base64_encode($post->image)); ?>" alt="Post Image" style="max-width: 40%; height: auto;">
+                <div class="post_content">
+                    <div class="author_name">
+                        <a href="<?php echo e(route('profile.show', $post->user)); ?>"><?php echo e($post->user->username); ?></a>
                     </div>
-                <?php endif; ?>
+                    <div class="post_title">
+                        <a href="<?php echo e(route('posts.show', $post)); ?>"><?php echo e(Str::limit($post->title, 50)); ?></a>
+                    </div>
+                    <div class="post_text">
+                        <?php echo e(Str::limit($post->text, 100)); ?>
+
+                    </div>
+                    <?php if($post->image): ?>
+                        <div class="post_image">
+                            <img src="data:image/jpeg;base64,<?php echo e(base64_encode($post->image)); ?>" alt="Post Image" style="max-width: 40%; height: auto;">
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
