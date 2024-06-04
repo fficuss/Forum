@@ -51,7 +51,7 @@ a {
 
 .icons {
     margin-top: 12px;
-    margin-left: auto;
+    margin-left: 1000px;
     display: flex;
     align-items: center;
 }
@@ -64,10 +64,13 @@ a {
     font-weight: bold;
     position: absolute;
     font-family: 'Roboto', sans-serif;
+    margin-left: 1110px;
 }
 
 .content {
     margin: 20px;
+    margin-left: 50px;
+    width: 90%;
 }
 
 .post-form {
@@ -91,14 +94,17 @@ a {
 
 .author_icon {
     flex-shrink: 0;
+    margin: 5px;
 }
 
 .author_name {
+
     margin-top: 8px;
-    margin-left: 40px;
+    margin-left: 5px;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     color: #363438;
+    font-size: 18px;
 }
 
 .author_id {
@@ -109,13 +115,43 @@ a {
     color: #918f94;
 }
 
+.post_title{
+    margin: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: #363438;
+    font-size: 30px;
+}
+
 .post_text {
     width: 60%;
     word-break: break-all;
     font-family: 'Roboto', sans-serif;
     color: #363438;
-    margin-top: 45px;
-    margin-left: 40px;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.create-post-button button{
+    font-family: 'Roboto', sans-serif;
+    color: #363438;
+    font-size: 30px;
+    border: none;
+    border-radius: 12px;
+    background-color: #ae8595;
+    font-weight: bold;
+    width: 150px;
+    height: 50px;
+}
+
+.create-post-button button:hover{
+    background-color: #c09aa9;
+    border: none;
+}
+
+.create-post-button button:active{
+    background-color: #865f67;
+    border: none;
 }
 
 .post_image {
@@ -128,4 +164,87 @@ a {
     width: 100%;
     height: auto;
     border-radius: 10px;
+}
+
+.post_content{
+    margin: 20px;
+    margin-left: 50px;
+    width: 90%;
+}
+
+
+.form-group{
+    margin: 10px;
+    display: flex;
+    align-items:flex-start;
+    font-family: 'Roboto', sans-serif;
+    color: #363438;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.form-label {
+    margin-right: 10px; /* Space between label and input */
+}
+
+input[type="text"]{
+    background-color: #fdf6f1;
+    border: 2px solid #363438;
+    height: 20px;
+    width: 80%;
+    border-radius: 12px;
+    font-size: 28px;
+    padding: 8px 15px;
+}
+
+textarea{
+    background-color: #fdf6f1;
+    border: 2px solid #363438;
+    height: 300px;
+    width: 80%;
+    border-radius: 12px;
+    font-size: 28px;
+    padding: 8px 15px;
+    resize: vertical;
+}
+
+textarea.form-input {
+    resize: vertical; /* Allow vertical resizing only */
+    height: 100px; /* Adjust the height as needed */
+}
+
+.button-label {
+    font-family: 'Roboto', sans-serif;
+    color: #363438;
+    font-size: 19px;
+    border: none;
+    border-radius: 12px;
+    background-color: #e0cdd5;
+    font-weight: bold;
+    width: 180px;
+    height: 35px;
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    text-align: center;
+    cursor: pointer; 
+}
+
+.submitbth{
+    font-family: 'Roboto', sans-serif;
+    color: #363438;
+    font-size: 30px;
+    border: none;
+    border-radius: 12px;
+    background-color: #ae8595;
+    font-weight: bold;
+    width: 200px;
+    height: 50px;
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    text-align: center;
+    cursor: pointer; 
+    margin-left: 40%;
 }

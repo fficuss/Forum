@@ -69,7 +69,7 @@ async function updateProfileIcon() {
   }
   
 
-function sendMessage() {
+  function sendMessage() {
     var messageInput = document.getElementById('msg');
     var messageText = messageInput.value.trim();
     
@@ -83,11 +83,27 @@ function sendMessage() {
     messageDiv.textContent = messageText;
     chatMessages.appendChild(messageDiv);
     
+    // Send the message via AJAX to the backend
+    var formData = new FormData();
+    formData.append('message', messageText);
+    
+    fetch('/send-message', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        // Handle response if necessary
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 
     messageInput.value = '';
-
-  }
-  
-
+}
 
 
