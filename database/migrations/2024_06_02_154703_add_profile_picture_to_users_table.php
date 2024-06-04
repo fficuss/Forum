@@ -12,11 +12,9 @@ class AddProfilePictureToUsersTable extends Migration
      * @return void
      */
     public function up()
-{
-    Schema::table('users', function (Blueprint $table) {
-        $table->binary('profile_picture')->nullable();
-    });
-}
+    {
+        // This migration is intentionally left blank.
+    }
 
     /**
      * Reverse the migrations.
@@ -25,10 +23,6 @@ class AddProfilePictureToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('profile_picture');
-        });
+        // This migration is intentionally left blank.
     }
 }
-
-
