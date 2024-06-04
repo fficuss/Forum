@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
-    public function showprofile()
+    public function showProfile()
     {
-        return view('profile', ['user' => Auth::user()]);
+        $recipient = Auth::user(); // Get the authenticated user
+        return view('profile', ['recipient' => $recipient]);
     }
 
     public function showeditprofile()
@@ -62,5 +64,8 @@ class ProfileController extends Controller
         return redirect()->route('profile')->with('success', 'Profile updated successfully');
     }
 
-
+    public function show(User $user)
+    {
+        return view('profile', ['user' => $user]);
+    }
 }

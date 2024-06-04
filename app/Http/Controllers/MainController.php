@@ -10,8 +10,8 @@ class MainController extends Controller
 {
     public function showmain()
     {
-        $posts = Post::latest()->get();
-        return view('fanhome', compact('posts'));
+        $posts = Post::all(); // Retrieve all posts from the database
+    return view('fanhome', compact('posts')); // Pass the $posts variable to the view
     }
 
     public function store(Request $request)
