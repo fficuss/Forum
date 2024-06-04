@@ -41,40 +41,36 @@
     </div>
     <div class="content">
         @auth
-            <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data" class="post-form">
-                @csrf
-                <div class="form-group">
-                    <label for="post_text">Post Text</label>
-                    <textarea name="post_text" id="post_text" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="post_image">Post Image</label>
-                    <input type="file" name="post_image" id="post_image" accept="image/*">
-                </div>
-                <button type="submit">Submit</button>
-            </form>
+            <div class="create-post-button">
+                <button onclick="window.location='{{ url('/posts/create') }}'">Create</button>
+            </div>
         @endauth
 
         @foreach($posts as $post)
             <div class="posts" id="posts">
                 <div class="author_icon">
                     @if ($post->user->profile_picture)
-                        <img src="data:image/jpeg;base64,{{ base64_encode($post->user->profile_picture) }}" alt="Profile" style="height: 32px; width: 32px; margin-right: 10px;">
+                        <img src="{{ asset('storage/' . $post->user->profile_picture) }}" alt="Profile" style="height: 32px; width: 32px; margin-right: 10px;">
                     @else
                         <img src="{{ asset('img/profile_icon.png') }}" alt="Profile" style="height: 32px; width: 32px; margin-right: 10px;">
                     @endif
                 </div>
-                <div class="author_name">
-                    {{ $post->user->username }}
-                </div>
-                <div class="post_text">
-                    {{ $post->text }}
-                </div>
-                @if ($post->image)
-                    <div class="post_image">
-                        <img src="data:image/jpeg;base64,{{ base64_encode($post->image) }}" alt="Post Image" style="max-width: 40%; height: auto;">
+                <div class="post_content">
+                    <div class="author_name">
+                        <a href="{{ route('profile.show', $post->user) }}">{{ $post->user->username }}</a>
                     </div>
-                @endif
+                    <div class="post_title">
+                        <a href="{{ route('posts.show', $post) }}">{{ Str::limit($post->title, 50) }}</a>
+                    </div>
+                    <div class="post_text">
+                        {{ Str::limit($post->text, 100) }}
+                    </div>
+                    @if ($post->image)
+                        <div class="post_image">
+                            <img src="data:image/jpeg;base64,{{ base64_encode($post->image) }}" alt="Post Image" style="max-width: 40%; height: auto;">
+                        </div>
+                    @endif
+                </div>
             </div>
         @endforeach
     </div>

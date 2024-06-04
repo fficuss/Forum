@@ -15,10 +15,19 @@
         <div class="figure"></div>
     </div>
     <div class="side1" id="side1">
+        <!-- Sidebar with user's chats -->
+        <h2>Chats</h2>
+        @foreach($chats as $chat)
+            <div>
+                <a href="{{ route('messenger.show', $chat->id) }}">{{ $chat->recipient->username }}</a>
+            </div>
+        @endforeach
     </div>
     <footer>
         <div id="chat-messages" class="chat-messages">
-            
+        @foreach ($messages as $message)
+            <div>{{ $message->content }}</div>
+        @endforeach
         </div>
         <div class="message_input">
             <input type="message" placeholder="Message" name="msg" id="msg" required>
