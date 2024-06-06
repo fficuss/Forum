@@ -1,0 +1,1 @@
+<?php /**PATH C:\Users\solov\FanHome\resources\views/partials/discussions.blade.php ENDPATH**/ ?>
