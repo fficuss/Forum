@@ -13,8 +13,6 @@ class MainController extends Controller
     {
         $posts = Post::orderBy('created_at', 'desc')->get();
         $discussions = Discussion::orderBy('created_at', 'desc')->get();
-
-    // Pass both variables to the view
         return view('fanhome', compact('posts', 'discussions'));
     }
 

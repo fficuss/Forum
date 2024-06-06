@@ -59,15 +59,13 @@ class PostController extends Controller
 
         if ($request->hasFile('images')) {
             try {
-                // Get the file contents and store it
                 $images = $request->file('images');
                 Log::info('Uploaded profile picture:', ['filename' => $images->getClientOriginalName()]);
                 $imagesPath = $images->store('post_images', 'public');
 
-                // Update the user's profile picture path
                 $post->images = $imagesPath;
             } catch (\Exception $e) {
-                // Log any exceptions that occur during file processing
+
                 Log::error('Error processing picture: ' . $e->getMessage());
                 return redirect()->back()->withErrors(['error' => 'Error processing picture']);
             }

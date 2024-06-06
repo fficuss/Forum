@@ -1,6 +1,5 @@
 <?php
 
-// app/Models/Answer.php
 
 namespace App\Models;
 

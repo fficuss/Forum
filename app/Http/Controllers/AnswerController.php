@@ -1,7 +1,4 @@
 <?php
-
-// app/Http/Controllers/AnswerController.php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -37,7 +34,7 @@ class AnswerController extends Controller
             'content' => $request->text,
             'user_id' => auth()->id(),
             'discussion_id' => $answer->discussion_id,
-            'parent_id' => $answer->id, // Ensure it's marked as a reply
+            'parent_id' => $answer->id,
         ]);
 
         $reply->save();

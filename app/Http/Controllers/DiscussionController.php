@@ -1,6 +1,5 @@
 <?php
 
-// DiscussionController.php
 
 namespace App\Http\Controllers;
 
