@@ -1,7 +1,46 @@
+
+
 body {
     margin: 0;
     padding: 0;
     background-color: #faeee4;
+}
+
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.search-container input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+}
+.search-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+.filter-container {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 200px;
+    height: 100%;
+    background: #fff;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+    transition: right 0.3s;
+    padding: 20px;
+    overflow-y: auto;
+}
+.filter-container.active {
+    right: 0;
+}
+.filter-container .close-btn {
+    cursor: pointer;
+    padding: 5px 10px;
+    background: #ccc;
+    border: none;
 }
 
 .container {
@@ -51,7 +90,7 @@ a {
 
 .icons {
     margin-top: 12px;
-    margin-left: 1000px;
+    margin-left: 1030px;
     display: flex;
     align-items: center;
 }
@@ -67,6 +106,67 @@ a {
     margin-left: 1110px;
 }
 
+.profile-pic {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.search-filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.filter-button {
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.filter-container {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+    transition: right 0.3s;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.filter-container.open {
+    right: 0;
+}
+
+.filter-container h3 {
+    margin-top: 0;
+}
+
+.filter-container label {
+    display: block;
+    margin-top: 10px;
+}
+
+.large-profile-pic {
+    height: 180px;
+    width: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 .content {
     margin: 20px;
     margin-left: 50px;
@@ -92,14 +192,28 @@ a {
     flex-wrap: wrap;
 }
 
+.discussions{
+    background-color: #fef6f0;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.author{
+    display: flex;
+}
 .author_icon {
     flex-shrink: 0;
+    margin-top: 10px;
     margin: 5px;
 }
 
 .author_name {
-
-    margin-top: 8px;
+    margin-top: 15px;
     margin-left: 5px;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
@@ -116,7 +230,7 @@ a {
 }
 
 .post_title{
-    margin: 10px;
+    margin-top: 0px;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     color: #363438;
@@ -129,10 +243,39 @@ a {
     font-family: 'Roboto', sans-serif;
     color: #363438;
     margin-top: 20px;
-    margin-left: 15px;
 }
 
 .create-post-button button{
+    font-family: 'Roboto', sans-serif;
+    color: #363438;
+    font-size: 20px;
+    text-align: center;
+    border: none;
+    border-radius: 12px;
+    background-color: #ae8595;
+    font-weight: bold;
+    width: 150px;
+    height: 50px;
+}
+
+.create-discussion-button button{
+    font-family: 'Roboto', sans-serif;
+    color: #363438;
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    background-color: #ae8595;
+    font-weight: bold;
+    width: 150px;
+    height: 50px;
+    margin-left: 20px;
+}
+
+.buttons{
+    display: flex;
+}
+
+.search-btn {
     font-family: 'Roboto', sans-serif;
     color: #363438;
     font-size: 30px;
@@ -142,6 +285,41 @@ a {
     font-weight: bold;
     width: 150px;
     height: 50px;
+    margin-left: 20px;
+}
+
+
+.filter-btn {
+    font-family: 'Roboto', sans-serif;
+    color: #363438;
+    font-size: 30px;
+    border: none;
+    border-radius: 12px;
+    background-color: #ae8595;
+    font-weight: bold;
+    width: 150px;
+    height: 50px;
+    margin-left: 20px;
+}
+
+.filter-btn:hover {
+    background-color: #c09aa9;
+    border: none;
+}
+
+.filter-btn:active{
+    background-color: #865f67;
+    border: none;
+}
+
+.search-btn:hover{
+    background-color: #c09aa9;
+    border: none;
+}
+
+.search-btn:active{
+    background-color: #865f67;
+    border: none;
 }
 
 .create-post-button button:hover{

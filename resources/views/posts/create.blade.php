@@ -1,11 +1,10 @@
-<!-- resources/views/posts/create.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Post</title>
-    <link rel="stylesheet" href="{{ asset('/mainpage.css') }}">
+    <link rel="stylesheet" href="{{ asset('/posts.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -13,6 +12,7 @@
         <div class="site_title">
             <a href="{{ url('/fanhome') }}">FORUM</a>
         </div>
+        <div class="figure"></div>
     </div>
     <div class="post_content">
         <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data" class="post-form">
@@ -23,15 +23,19 @@
             </div>
             <div class="form-group">
                 <label for="post_text" class="form-label">Post Text: </label>
-                <textarea name="post_text" id="post_text" required></textarea>
+                <textarea name="post_text" placeholder="Text" id="post_text" required></textarea>
             </div>
             <div class="form-group">
-                <label for="post_image" class="form-label">Post Image: </label>
-                <input type="file" name="post_image" id="post_image" class="form-input" accept="image/*" style="display:none;">
-            <label for="post_image" class="button-label">Choose File</label>
+                <label for="post_themes" class="form-label">Post Themes (comma-separated): </label>
+                <input type="text" placeholder="#Theme1, #Theme2" name="post_themes" id="post_themes">
             </div>
-            <button type="submit" class="submitbth">Submit</button>
+            <div class="image-container">
+                <label for="post_image" class="form-label">Post Image: </label>
+                <input type="file" name="images" accept="image/*">
+            </div>
+            <button type="submit" class="submitbtn">Submit</button>
         </form>
     </div>
+    <script src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>

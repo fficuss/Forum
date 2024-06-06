@@ -1,3 +1,31 @@
+function searchPosts() {
+  const query = document.getElementById('search-input').value;
+  let url = `{{ url('/posts') }}?`;
+
+  if (query.startsWith('@')) {
+      const username = query.substring(1);
+      url += `user=${username}`;
+  } else {
+      url += `title=${query}`;
+  }
+
+  fetch(url, {
+      headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+      }
+  })
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('posts-container').innerHTML = data;
+  })
+  .catch(error => console.error('Error fetching posts:', error));
+}
+
+function toggleFilter() {
+  const filterContainer = document.getElementById('filter-container');
+  filterContainer.classList.toggle('active');
+}
+
 function openPhotoPopup() {
     var popup = document.getElementById("photo-popup");
     popup.style.display = "block";
@@ -13,6 +41,7 @@ function displayChosenPhoto() {
         openPopupButton.alt = "Chosen Photo";
     }
 }
+
 
 function uploadPhoto() {
     var popup = document.getElementById("photo-popup");
@@ -69,7 +98,7 @@ async function updateProfileIcon() {
   }
   
 
-  function sendMessage() {
+function sendMessage() {
     var messageInput = document.getElementById('msg');
     var messageText = messageInput.value.trim();
     
@@ -83,27 +112,11 @@ async function updateProfileIcon() {
     messageDiv.textContent = messageText;
     chatMessages.appendChild(messageDiv);
     
-    // Send the message via AJAX to the backend
-    var formData = new FormData();
-    formData.append('message', messageText);
-    
-    fetch('/send-message', {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        // Handle response if necessary
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
 
     messageInput.value = '';
-}
+
+  }
+  
+
 
 

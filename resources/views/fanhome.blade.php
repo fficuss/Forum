@@ -16,13 +16,10 @@
             @auth
                 <a href="{{ url('/profile') }}">
                     @if(Auth::user()->profile_picture)
-                        <img src="{{ asset('storage/' . Auth::user()->profile_picture) }}" alt="Profile" style="height: 32px; width: 32px; margin-right: 10px;">
+                        <img src="{{ asset('storage/' . Auth::user()->profile_picture) }}" alt="Profile" class="profile-pic">
                     @else
-                        <img src="{{ asset('img/default_profile_icon.png') }}" alt="Profile" style="height: 32px; width: 32px; margin-right: 10px;">
+                        <img src="{{ asset('img/profile_icon.png') }}" alt="Profile" class="profile-pic">
                     @endif
-                </a>
-                <a href="{{ url('/messenger') }}">
-                    <img src="{{ asset('img/messenger.png') }}" alt="Messenger" style="height: 32px; width: 32px;">
                 </a>
             @endauth
         </div>
@@ -40,40 +37,76 @@
         <div class="figure"></div>
     </div>
     <div class="content">
-        @auth
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search posts by title or @username">
+            <button onclick="searchPosts()">Search</button>
+            <button onclick="toggleFilter()">Filter</button>
+        </div>
+        <div class="buttons">
             <div class="create-post-button">
-                <button onclick="window.location='{{ url('/posts/create') }}'">Create</button>
+                <button onclick="window.location='{{ url('/posts/create') }}'">Create Post</button>
             </div>
-        @endauth
-
-        @foreach($posts as $post)
-            <div class="posts" id="posts">
-                <div class="author_icon">
-                    @if ($post->user->profile_picture)
-                        <img src="{{ asset('storage/' . $post->user->profile_picture) }}" alt="Profile" style="height: 32px; width: 32px; margin-right: 10px;">
-                    @else
-                        <img src="{{ asset('img/profile_icon.png') }}" alt="Profile" style="height: 32px; width: 32px; margin-right: 10px;">
-                    @endif
-                </div>
-                <div class="post_content">
-                    <div class="author_name">
-                        <a href="{{ route('profile.show', $post->user) }}">{{ $post->user->username }}</a>
-                    </div>
-                    <div class="post_title">
-                        <a href="{{ route('posts.show', $post) }}">{{ Str::limit($post->title, 50) }}</a>
-                    </div>
-                    <div class="post_text">
-                        {{ Str::limit($post->text, 100) }}
-                    </div>
-                    @if ($post->image)
-                        <div class="post_image">
-                            <img src="data:image/jpeg;base64,{{ base64_encode($post->image) }}" alt="Post Image" style="max-width: 40%; height: auto;">
+            <div class="create-discussion-button">
+                <button onclick="window.location='{{ url('/discussions/create') }}'">Create Discussions</button>
+            </div>
+        </div>
+        <div id="posts-container">
+            @include('partials.posts', ['posts' => $posts])
+            @foreach($discussions as $discussion)
+                <div class="posts" id="posts">
+                    <div class="author">
+                        <div class="author_icon">
+                            @if ($discussion->user->profile_picture)
+                                <img src="{{ asset('storage/' . $discussion->user->profile_picture) }}" alt="Profile" class="profile-pic">
+                            @else
+                                <img src="{{ asset('img/profile_icon.png') }}" alt="Profile" class="profile-pic">
+                            @endif
                         </div>
-                    @endif
+                        <div class="author_name">
+                            <a href="{{ route('profile.show', $discussion->user) }}">{{ $discussion->user->username }}</a>
+                        </div>
+                    </div>
+                    <div class="post_content">
+                        <div class="post_title">
+                            <a href="{{ route('discussions.show', $discussion) }}">{{ Str::limit($discussion->title, 50) }}</a>
+                        </div>
+                        <div class="post_text">
+                            {{ Str::limit($discussion->text, 100) }}
+                        </div>
+                    </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
     </div>
     <script src="{{ asset('js/script.js') }}"></script>
+    <script>
+        function searchPosts() {
+            const query = document.getElementById('search-input').value;
+            let url = `{{ url('/posts') }}?`;
+
+            if (query.startsWith('@')) {
+                const username = query.substring(1);
+                url += `user=${username}`;
+            } else {
+                url += `title=${query}`;
+            }
+
+            fetch(url, {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('posts-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error fetching posts:', error));
+        }
+
+        function toggleFilter() {
+            const filterContainer = document.getElementById('filter-container');
+            filterContainer.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
