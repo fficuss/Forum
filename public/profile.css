@@ -105,6 +105,94 @@ a {
     height: 100%;
 }
 
+.create-post-button button:hover{
+    background-color: #c09aa9;
+    border: none;
+}
+
+.create-post-button button:active{
+    background-color: #865f67;
+    border: none;
+}
+
+.create-post-button button{
+    font-family: 'Roboto', sans-serif;
+    color: #363438;
+    font-size: 20px;
+    text-align: center;
+    border: none;
+    border-radius: 12px;
+    background-color: #ae8595;
+    font-weight: bold;
+    width: 150px;
+    height: 50px;
+}
+
+.create-discussion-button button{
+    font-family: 'Roboto', sans-serif;
+    color: #363438;
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    background-color: #ae8595;
+    font-weight: bold;
+    width: 150px;
+    height: 50px;
+    margin-left: 20px;
+}
+
+.buttons{
+    display: flex;
+}
+
+input[type="text"]{
+    background-color: #fdf6f1;
+    border: 2px solid #363438;
+    height: 20px;
+    width: 20%;
+    border-radius: 12px;
+    font-size: 28px;
+    padding: 8px 15px;
+}
+
+input[type="password"]
+{
+    background-color: #fdf6f1;
+    border: 2px solid #363438;
+    height: 20px;
+    width: 20%;
+    border-radius: 12px;
+    font-size: 28px;
+    padding: 8px 15px;
+    font-size: 16px;
+}
+
+.password-change{
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    margin-top: 20px; 
+    margin-left: 280px;
+}
+
+.submit{
+    font-family: 'Roboto', sans-serif;
+    color: #363438;
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    background-color: #ae8595;
+    font-weight: bold;
+    width: 200px;
+    height: 50px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer; 
+    margin-left: 40%;
+}
+
 .profile-pic {
     height: 32px;
     width: 32px;
