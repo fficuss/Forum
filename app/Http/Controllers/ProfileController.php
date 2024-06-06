@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Discussion;
@@ -26,8 +27,11 @@ class ProfileController extends Controller
     {
         $request->validate([
             'username' => 'required|string|max:255',
-            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'current_password' => 'nullable|string|min:8',
+            'new_password' => 'nullable|string|min:8|confirmed',
         ]);
+
 
         $user = Auth::user();
 
@@ -44,6 +48,14 @@ class ProfileController extends Controller
 
                 Log::error('Error processing profile picture: ' . $e->getMessage());
                 return redirect()->back()->withErrors(['error' => 'Error processing profile picture']);
+            }
+        }
+
+        if ($request->filled('current_password') && $request->filled('new_password')) {
+            if (Hash::check($request->current_password, $user->password)) {
+                $user->password = Hash::make($request->new_password);
+            } else {
+                return redirect()->back()->withErrors(['current_password' => 'Current password is incorrect']);
             }
         }
 

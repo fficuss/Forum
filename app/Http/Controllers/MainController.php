@@ -36,5 +36,24 @@ class MainController extends Controller
 
         return redirect()->back();
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $posts = collect();
+        $discussions = collect();
+
+        if ($query) {
+            $posts = Post::where('title', 'like', "%{$query}%")->get();
+            $discussions = Discussion::where('title', 'like', "%{$query}%")->get();
+        }
+
+        if ($request->ajax()) {
+            return view('partials.search_results', compact('posts', 'discussions'))->render();
+        }
+
+        return view('fanhome', compact('posts', 'discussions'));
+    }
     
 }

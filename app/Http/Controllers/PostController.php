@@ -113,4 +113,15 @@ class PostController extends Controller
 
         return redirect()->back();
     }
+
+    public function update(Request $request, Post $post)
+    {
+        $this->authorize('update', $post);
+    
+        $request->validate(['text' => 'required']);
+
+        $post->update(['text' => $request->text]);
+    
+        return redirect()->route('posts.show', $post)->with('success', 'Post updated successfully');
+    }
 }
