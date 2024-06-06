@@ -15,7 +15,6 @@
         <div class="figure"></div>
     </div>
     <div class="side1" id="side1">
-        <!-- Sidebar with user's chats -->
         <h2>Chats</h2>
         @foreach($chats as $chat)
             <div>
@@ -24,18 +23,17 @@
         @endforeach
     </div>
     <footer>
-        <!-- Form for sending a message -->
         <form action="{{ route('message.send', $recipient->id) }}" method="POST">
             @csrf
             <div class="chat-messages" id="chat-messages">
-                <!-- Displaying previous messages -->
+            
                 @foreach ($previousMessages as $message)
                     <div>{{ $message->content }}</div>
                 @endforeach
             </div>
             <div class="message_input">
                 <input type="text" placeholder="Message" name="message" id="message" required>
-                <!-- Add a hidden input field to pass the recipient's ID -->
+               
                 <input type="hidden" name="recipient_id" value="{{ $recipient->id }}">
                 <div class="micon">
                     <button type="submit"><img src="{{ asset('img/message.png') }}" alt="Send Icon" style="height: 32px; width: 32px;"></button>

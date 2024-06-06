@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Posts with Theme: {{ $theme->name }}</title>
-    <link rel="stylesheet" href="{{ asset('/mainpage.css') }}"> <!-- Use mainpage.css instead of posts.css -->
+    <link rel="stylesheet" href="{{ asset('/mainpage.css') }}"> 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,7 +14,7 @@
         </div>
         <div class="icons">
             @auth
-                <a href="{{ route('profile.show', Auth::user()) }}"> <!-- Use route('profile.show', Auth::user()) instead of url('/profile') -->
+                <a href="{{ route('profile.show', Auth::user()) }}">
                     @if(Auth::user()->profile_picture)
                         <img src="{{ asset('storage/' . Auth::user()->profile_picture) }}" alt="Profile" class="profile-pic">
                     @else
@@ -25,7 +25,7 @@
         </div>
         <div class="LogInButton">
             @guest
-                <a href="{{ route('signin') }}">Sign in</a> <!-- Use route('signin') instead of url('/signin') -->
+                <a href="{{ route('signin') }}">Sign in</a> 
             @endguest
             @auth
                 <form id="logout-form" action="{{ route('signout') }}" method="POST" style="display: none;">

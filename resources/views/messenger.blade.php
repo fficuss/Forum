@@ -15,7 +15,6 @@
         <div class="figure"></div>
     </div>
     <div class="side1" id="side1">
-        <!-- Sidebar with user's chats -->
         <h2>Chats</h2>
         @foreach($chats as $chat)
             <div>
