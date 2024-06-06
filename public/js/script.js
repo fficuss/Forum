@@ -87,7 +87,7 @@ async function updateProfileIcon() {
   
       if (response.ok) {
         alert('Profile icon updated successfully!');
-        window.location.reload(); // Reload the page to reflect the changes
+        window.location.reload(); 
       } else {
         alert(`Error: ${result.error}`);
       }
