@@ -5,7 +5,7 @@ This guide will walk you through setting up a Laravel project, including install
 # Tools used for development
 
 - HTML
-- CSS (with Tailwind Css)
+- CSS 
 - JavaScript
 - Laravel
 - VsCode
