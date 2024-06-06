@@ -38,18 +38,19 @@
     </div>
     <div class="content">
         <div class="search-container">
-            <input type="text" id="search-input" placeholder="Search posts by title or @username">
-            <button onclick="searchPosts()">Search</button>
-            <button onclick="toggleFilter()">Filter</button>
+            <input type="text" id="search-input" placeholder="Search posts or discussions by title or @username">
+            <button onclick="searchContent()">Search</button>
         </div>
-        <div class="buttons">
-            <div class="create-post-button">
-                <button onclick="window.location='<?php echo e(url('/posts/create')); ?>'">Create Post</button>
+        <?php if(auth()->guard()->check()): ?>
+            <div class="buttons">
+                <div class="create-post-button">
+                    <button onclick="window.location='<?php echo e(url('/posts/create')); ?>'">Create Post</button>
+                </div>
+                <div class="create-discussion-button">
+                    <button onclick="window.location='<?php echo e(url('/discussions/create')); ?>'">Create Discussions</button>
+                </div>
             </div>
-            <div class="create-discussion-button">
-                <button onclick="window.location='<?php echo e(url('/discussions/create')); ?>'">Create Discussions</button>
-            </div>
-        </div>
+        <?php endif; ?>
         <div id="posts-container">
             <?php echo $__env->make('partials.posts', ['posts' => $posts], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <?php $__currentLoopData = $discussions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $discussion): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -81,16 +82,9 @@
     </div>
     <script src="<?php echo e(asset('js/script.js')); ?>"></script>
     <script>
-        function searchPosts() {
+        function searchContent() {
             const query = document.getElementById('search-input').value;
-            let url = `<?php echo e(url('/posts')); ?>?`;
-
-            if (query.startsWith('@')) {
-                const username = query.substring(1);
-                url += `user=${username}`;
-            } else {
-                url += `title=${query}`;
-            }
+            const url = `<?php echo e(url('/search')); ?>?query=${query}`;
 
             fetch(url, {
                 headers: {
@@ -101,12 +95,7 @@
             .then(data => {
                 document.getElementById('posts-container').innerHTML = data;
             })
-            .catch(error => console.error('Error fetching posts:', error));
-        }
-
-        function toggleFilter() {
-            const filterContainer = document.getElementById('filter-container');
-            filterContainer.classList.toggle('active');
+            .catch(error => console.error('Error fetching content:', error));
         }
     </script>
 </body>

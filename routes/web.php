@@ -46,3 +46,7 @@ Route::post('/discussions', [DiscussionController::class, 'store'])->name('discu
 Route::post('/answers/{discussion}', [AnswerController::class, 'store'])->name('answers.store');
 Route::post('/replies/{answer}', [AnswerController::class, 'storeReply'])->name('replies.store');
 Route::get('/discussions/{discussion}', [DiscussionController::class, 'show'])->name('discussions.show');
+
+Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update'); 
+
+Route::get('/search', [MainController::class, 'search'])->name('search');

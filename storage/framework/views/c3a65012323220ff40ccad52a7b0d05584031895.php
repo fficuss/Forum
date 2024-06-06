@@ -21,7 +21,7 @@
         <?php echo csrf_field(); ?>
         <div class="image-container">
             <button type="button" class="open-popup-button" onclick="openPhotoPopup()">
-            <img src="<?php echo e($user->profile_picture ? 'data:image/jpeg;base64,' . base64_encode($user->profile_picture) : asset('img/profile_icon.png')); ?>" alt="Profile Picture" style="height: 180px; width: 180px;">
+                <img src="<?php echo e($user->profile_picture ? 'data:image/jpeg;base64,' . base64_encode($user->profile_picture) : asset('img/profile_icon.png')); ?>" alt="Profile Picture" style="height: 180px; width: 180px;">
             </button>
             <div id="photo-popup" class="popup">
                 <input type="file" id="file-input" name="profile_picture" accept="image/*" onchange="displayChosenPhoto()"/>
@@ -31,7 +31,12 @@
         <div class="nickname1">
             <input type="text" placeholder="Nickname" name="username" id="nck" required value="<?php echo e($user->username); ?>">
         </div>
-        <button type="submit">Commit Changes</button>
+        <div class="password-change">
+            <input type="password" name="current_password" placeholder="Current Password">
+            <input type="password" name="new_password" placeholder="New Password">
+            <input type="password" name="new_password_confirmation" placeholder="Confirm New Password">
+        </div>
+        <button class="submit" type="submit">Commit Changes</button>
     </form>
 
     <script src="<?php echo e(asset('js/script.js')); ?>"></script>

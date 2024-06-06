@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Posts with Theme: <?php echo e($theme->name); ?></title>
-    <link rel="stylesheet" href="<?php echo e(asset('/mainpage.css')); ?>"> <!-- Use mainpage.css instead of posts.css -->
+    <link rel="stylesheet" href="<?php echo e(asset('/mainpage.css')); ?>"> 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,7 +14,7 @@
         </div>
         <div class="icons">
             <?php if(auth()->guard()->check()): ?>
-                <a href="<?php echo e(route('profile.show', Auth::user())); ?>"> <!-- Use route('profile.show', Auth::user()) instead of url('/profile') -->
+                <a href="<?php echo e(route('profile.show', Auth::user())); ?>">
                     <?php if(Auth::user()->profile_picture): ?>
                         <img src="<?php echo e(asset('storage/' . Auth::user()->profile_picture)); ?>" alt="Profile" class="profile-pic">
                     <?php else: ?>
@@ -25,7 +25,7 @@
         </div>
         <div class="LogInButton">
             <?php if(auth()->guard()->guest()): ?>
-                <a href="<?php echo e(route('signin')); ?>">Sign in</a> <!-- Use route('signin') instead of url('/signin') -->
+                <a href="<?php echo e(route('signin')); ?>">Sign in</a> 
             <?php endif; ?>
             <?php if(auth()->guard()->check()): ?>
                 <form id="logout-form" action="<?php echo e(route('signout')); ?>" method="POST" style="display: none;">

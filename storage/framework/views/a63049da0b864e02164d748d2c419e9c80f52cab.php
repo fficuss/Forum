@@ -7,6 +7,25 @@
     <link rel="stylesheet" href="<?php echo e(asset('/posts.css')); ?>">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
+<style>
+    .submitbtn{
+        font-family: 'Roboto', sans-serif;
+        color: #363438;
+        font-size: 30px;
+        border: none;
+        border-radius: 12px;
+        background-color: #ae8595;
+        font-weight: bold;
+        width: 200px;
+        height: 50px;
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        text-align: center;
+        cursor: pointer; 
+        margin-left: 40%;
+    }
+</style>
 <body>
     <div class="container">
         <div class="site_title">
@@ -33,7 +52,7 @@
                 <label for="post_image" class="form-label">Post Image: </label>
                 <input type="file" name="images" accept="image/*">
             </div>
-            <button type="submit" class="submitbtn">Submit</button>
+            <button class="submitbtn" type="submit">Submit</button>
         </form>
     </div>
     <script src="<?php echo e(asset('js/script.js')); ?>"></script>

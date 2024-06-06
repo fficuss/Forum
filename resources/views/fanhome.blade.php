@@ -38,18 +38,19 @@
     </div>
     <div class="content">
         <div class="search-container">
-            <input type="text" id="search-input" placeholder="Search posts by title or @username">
-            <button onclick="searchPosts()">Search</button>
-            <button onclick="toggleFilter()">Filter</button>
+            <input type="text" id="search-input" placeholder="Search posts or discussions by title or @username">
+            <button onclick="searchContent()">Search</button>
         </div>
-        <div class="buttons">
-            <div class="create-post-button">
-                <button onclick="window.location='{{ url('/posts/create') }}'">Create Post</button>
+        @auth
+            <div class="buttons">
+                <div class="create-post-button">
+                    <button onclick="window.location='{{ url('/posts/create') }}'">Create Post</button>
+                </div>
+                <div class="create-discussion-button">
+                    <button onclick="window.location='{{ url('/discussions/create') }}'">Create Discussions</button>
+                </div>
             </div>
-            <div class="create-discussion-button">
-                <button onclick="window.location='{{ url('/discussions/create') }}'">Create Discussions</button>
-            </div>
-        </div>
+        @endauth
         <div id="posts-container">
             @include('partials.posts', ['posts' => $posts])
             @foreach($discussions as $discussion)
@@ -80,16 +81,9 @@
     </div>
     <script src="{{ asset('js/script.js') }}"></script>
     <script>
-        function searchPosts() {
+        function searchContent() {
             const query = document.getElementById('search-input').value;
-            let url = `{{ url('/posts') }}?`;
-
-            if (query.startsWith('@')) {
-                const username = query.substring(1);
-                url += `user=${username}`;
-            } else {
-                url += `title=${query}`;
-            }
+            const url = `{{ url('/search') }}?query=${query}`;
 
             fetch(url, {
                 headers: {
@@ -100,12 +94,7 @@
             .then(data => {
                 document.getElementById('posts-container').innerHTML = data;
             })
-            .catch(error => console.error('Error fetching posts:', error));
-        }
-
-        function toggleFilter() {
-            const filterContainer = document.getElementById('filter-container');
-            filterContainer.classList.toggle('active');
+            .catch(error => console.error('Error fetching content:', error));
         }
     </script>
 </body>

@@ -16,6 +16,18 @@
     </div>
     <div class="content">
         <div class="discussion-post">
+            <div class="author">
+                <div class="author_icon">
+                    <?php if($discussion->user->profile_picture): ?>
+                        <img src="<?php echo e(asset('storage/' . $discussion->user->profile_picture)); ?>" alt="Profile" class="profile-pic" style="height: 50px; width: 50px;">
+                    <?php else: ?>
+                        <img src="<?php echo e(asset('img/profile_icon.png')); ?>" alt="Profile" class="profile-pic" style="height: 50px; width: 50px; margin-right: 10px;">
+                    <?php endif; ?>
+                </div>
+                <div class="author_name">
+                    <a href="<?php echo e(route('profile.show', $discussion->user)); ?>"><?php echo e($discussion->user->username); ?></a>
+                </div>
+            </div>
             <h1><?php echo e($discussion->title); ?></h1>
             <p><?php echo e($discussion->text); ?></p>
         </div>

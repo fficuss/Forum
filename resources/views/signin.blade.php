@@ -22,7 +22,7 @@
         <form action="{{ url('/signin') }}" method="POST">
             @csrf
             <div class="email_input">
-                <input type="email" placeholder="Email or Username" name="email" id="email" required>
+                <input type="email" placeholder="Email" name="email" id="email" required>
             </div>
             <div class="password_input">
                 <input type="password" placeholder="Password" name="psw" id="psw" required>

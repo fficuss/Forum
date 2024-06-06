@@ -16,6 +16,18 @@
     </div>
     <div class="content">
         <div class="discussion-post">
+            <div class="author">
+                <div class="author_icon">
+                    @if ($discussion->user->profile_picture)
+                        <img src="{{ asset('storage/' . $discussion->user->profile_picture) }}" alt="Profile" class="profile-pic" style="height: 50px; width: 50px;">
+                    @else
+                        <img src="{{ asset('img/profile_icon.png') }}" alt="Profile" class="profile-pic" style="height: 50px; width: 50px; margin-right: 10px;">
+                    @endif
+                </div>
+                <div class="author_name">
+                    <a href="{{ route('profile.show', $discussion->user) }}">{{ $discussion->user->username }}</a>
+                </div>
+            </div>
             <h1>{{ $discussion->title }}</h1>
             <p>{{ $discussion->text }}</p>
         </div>

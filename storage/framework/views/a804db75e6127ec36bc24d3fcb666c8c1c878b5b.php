@@ -22,7 +22,7 @@
         <form action="<?php echo e(url('/signin')); ?>" method="POST">
             <?php echo csrf_field(); ?>
             <div class="email_input">
-                <input type="email" placeholder="Email or Username" name="email" id="email" required>
+                <input type="email" placeholder="Email" name="email" id="email" required>
             </div>
             <div class="password_input">
                 <input type="password" placeholder="Password" name="psw" id="psw" required>

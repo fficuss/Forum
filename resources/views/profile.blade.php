@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="{{ asset('/profile.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
+<style>
+    .create-post-button button{
+        font-family: 'Roboto', sans-serif;
+        color: #363438;
+        font-size: 20px;
+        text-align: center;
+        border: none;
+        border-radius: 12px;
+        background-color: #ae8595;
+        font-weight: bold;
+        width: 150px;
+        height: 50px;
+    }
+</style>
 <body>
     <div class="container">
         <div class="site_title">
@@ -34,8 +48,13 @@
     </div>
     <div class="content">
         @auth
-            <div class="create-post-button">
-                <button onclick="window.location='{{ url('/posts/create') }}'">Create</button>
+            <div class="buttons">
+                <div class="create-post-button">
+                    <button onclick="window.location='{{ url('/posts/create') }}'">Create Post</button>
+                </div>
+                <div class="create-discussion-button">
+                    <button onclick="window.location='{{ url('/discussions/create') }}'">Create Discussions</button>
+                </div>
             </div>
         @endauth
         <h2>{{ $user->username }}'s Posts</h2>

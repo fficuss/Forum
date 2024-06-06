@@ -7,6 +7,67 @@
     <link rel="stylesheet" href="{{ asset('/posts.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
+<style>
+    .likebtn{
+        font-family: 'Roboto', sans-serif;
+        color: #363438;
+        font-size: 20px;
+        border: none;
+        border-radius: 12px;
+        background-color: #ae8595;
+        font-weight: bold;
+        width: 90px;
+        height: 30px;
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        text-align: center;
+        cursor: pointer; 
+        margin-left: 88%;
+    }
+
+    .deletebtn{
+        font-family: 'Roboto', sans-serif;
+        color: #363438;
+        font-size: 20px;
+        border: none;
+        border-radius: 12px;
+        background-color: #ae8595;
+        font-weight: bold;
+        width: 90px;
+        height: 30px;
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        text-align: center;
+        cursor: pointer; 
+        margin-left: 20px;
+    }
+
+    .editPostButton{
+        font-family: 'Roboto', sans-serif;
+        color: #363438;
+        font-size: 20px;
+        border: none;
+        border-radius: 12px;
+        background-color: #ae8595;
+        font-weight: bold;
+        width: 90px;
+        height: 30px;
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        text-align: center;
+        cursor: pointer; 
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+
+    .post_image{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+</style>
 <body>
     <div class="container">
         <div class="site_title">
@@ -49,11 +110,22 @@
                 @method('DELETE')
                 <button type="submit" class="deletebtn" onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
             </form>
+            <button class="editPostButton">Edit</button>
+            <div class="editPostForm" style="display:none;">
+                <form action="{{ route('posts.update', $post) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group">
+                        <textarea name="text" required>{{ $post->text }}</textarea>
+                    </div>
+                    <button type="submit" class="updatebtn">Update Post</button>
+                </form>
+            </div>
         @endif
         @auth
             <form action="{{ route('posts.like', $post) }}" method="POST">
                 @csrf
-                <button type="submit">
+                <button class="likebtn" type="submit">
                     {{ auth()->user()->likes()->where('post_id', $post->id)->exists() ? 'Unlike' : 'Like' }}
                 </button>
             </form>
@@ -65,5 +137,13 @@
 
         <div class="like-count">{{ $post->likes()->count() }} likes</div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".editPostButton").click(function(){
+                $(".editPostForm").toggle();
+            });
+        });
+    </script>
 </body>
 </html>
