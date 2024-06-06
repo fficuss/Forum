@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Discussion;
 
 class MainController extends Controller
 {
     public function showmain()
     {
-        $posts = Post::all(); // Retrieve all posts from the database
-    return view('fanhome', compact('posts')); // Pass the $posts variable to the view
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        $discussions = Discussion::orderBy('created_at', 'desc')->get();
+
+    // Pass both variables to the view
+        return view('fanhome', compact('posts', 'discussions'));
     }
 
     public function store(Request $request)
@@ -34,4 +38,5 @@ class MainController extends Controller
 
         return redirect()->back();
     }
+    
 }

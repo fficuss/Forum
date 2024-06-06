@@ -9,17 +9,19 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'title', 'text', 'image', 'user_id'
-    ];
+    protected $fillable = ['title', 'text', 'user_id', 'images'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-
     public function likes()
     {
         return $this->hasMany(Like::class);
+    }
+
+    public function themes()
+    {
+    return $this->belongsToMany(Theme::class);
     }
 }

@@ -6,13 +6,15 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Discussion;
 
 class ProfileController extends Controller
 {
-    public function showProfile()
+    public function showprofile()
     {
-        $recipient = Auth::user(); // Get the authenticated user
-        return view('profile', ['recipient' => $recipient]);
+        $user = Auth::user();
+        $discussions = Discussion::where('user_id', $user->id)->get();
+        return view('profile', ['user' => $user, 'discussions' => $discussions]);
     }
 
     public function showeditprofile()
@@ -66,6 +68,7 @@ class ProfileController extends Controller
 
     public function show(User $user)
     {
-        return view('profile', ['user' => $user]);
+        $discussions = Discussion::where('user_id', $user->id)->get();
+        return view('profile', ['user' => $user, 'discussions' => $discussions]);
     }
 }

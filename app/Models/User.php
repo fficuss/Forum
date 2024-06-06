@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Answer;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasFactory, Notifiable;
 
     protected $fillable = [
         'username', 'email', 'password', 'profile_picture',
@@ -32,11 +34,15 @@ class User extends Authenticatable
         return $this->hasMany(Like::class);
     }
 
-    public function chats()
+    public function discussions()
     {
-        return $this->hasMany(Chat::class, 'sender_id')->orWhere('recipient_id', $this->id);
+        return $this->hasMany(Discussion::class);
     }
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
+
 }
-
-
 
