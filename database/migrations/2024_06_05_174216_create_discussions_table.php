@@ -20,6 +20,12 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
+
+        Schema::create('discussion_theme', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('discussion_id')->constrained('discussions')->onDelete('cascade');
+            $table->foreignId('theme_id')->constrained('themes')->onDelete('cascade');
+        });
     }
 
     /**

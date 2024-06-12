@@ -24,6 +24,7 @@ class CreateThemesTable extends Migration
             $table->foreignId('post_id')->constrained()->onDelete('cascade');
             $table->foreignId('theme_id')->constrained()->onDelete('cascade');
         });
+
     }
 
     /**
@@ -34,6 +35,7 @@ class CreateThemesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('post_theme');
+        Schema::dropIfExists('discussion_theme');
         Schema::dropIfExists('themes');
     }
 }
